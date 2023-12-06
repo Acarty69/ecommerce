@@ -1,0 +1,23 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OrderController!{% endblock %}
+
+{% block body %}
+    <p><strong>Select billing adresse</strong></p>
+        <a href="{{ path('add_addresse') }}" class="btn btn-primary">Add adresse</a>
+
+        <p>billing is set at : {{ billingAddress.ville }} {{ billingAddress.numero }} {{ billingAddress.rue }} {{ billingAddress.codepostal }}</p>
+
+        {% for adresse in app.user.profile.adresses %}
+
+            <div class="d-flex">
+                {% if not adresse.type %}
+                <p>Adresse : {{ adresse.numero }} {{ adresse.rue }} {{ adresse.codepostal }} </p>
+                <a href="{{ path('app_order_shipping', {id:billingAddress.id ,idShipping:adresse.id}) }}" class="btn btn-primary">select as shipping address</a>
+                {% endif %}
+            </div>
+
+        {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OrderController!{% endblock %}
+
+{% block body %}
+    <p><strong>Select payment method</strong></p>
+
+
+    <p>billing is set at : {{ billingAddress.ville }} {{ billingAddress.numero }} {{ billingAddress.rue }} {{ billingAddress.codepostal }}</p>
+
+
+    <p>billing is set at : {{ shippingAddress.ville }} {{ shippingAddress.numero }} {{ shippingAddress.rue }} {{ shippingAddress.codepostal }}</p>
+
+
+
+    <a href="{{ path('app_makeorder', {id:billingAddress.id, idShipping:shippingAddress.id}) }}" class="btn btn-success">Confirm payment and make order</a>
+{% endblock %}
